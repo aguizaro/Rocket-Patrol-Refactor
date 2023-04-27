@@ -38,8 +38,7 @@ class Play extends Phaser.Scene {
         this.anims.create({key: 'explode',frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9, first: 0}),frameRate: 30});
         // initialize score
         this.p1Score = 0;
-        //initialize time
-        this.seconds = 0;
+        this.successful_hit = false;
         // display score
         this.scoreConfig = {
             fontFamily: 'Courier',
@@ -121,7 +120,7 @@ class Play extends Phaser.Scene {
         if (rocket.x < ship.x + ship.width && 
           rocket.x + rocket.width > ship.x && 
           rocket.y < ship.y + ship.height &&
-          rocket.height + rocket.y > ship. y) {
+          rocket.height + rocket.y > ship. y) {  
           return true;
         } else {
           return false;
@@ -142,7 +141,12 @@ class Play extends Phaser.Scene {
         // score add and repaint
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
-        this.sound.play('sfx_explosion');
+
+
+        this.sound.play(this.chooseRandom(['sfx_explosion1','sfx_explosion2','sfx_explosion3','sfx_explosion4', 'sfx_explosion5']));
+
+        game.settings.gameTimer+= 1000;
+        this.updateClock();        
 
     }
 
@@ -151,5 +155,10 @@ class Play extends Phaser.Scene {
         this.seconds_left= Math.floor((game.settings.gameTimer/1000) + .5 - (this.clock.now/60));        
         this.clock.now++;
         this.timeLeft.setText(this.seconds_left); 
+    }
+
+    chooseRandom(choices){
+        let index= Math.floor(Math.random() * choices.length);
+        return choices[index];
     }
 }
