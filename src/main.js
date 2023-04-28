@@ -1,7 +1,7 @@
 /*
     NAME: Antonio Guizar Orozco
     TITLE: Rocket Patrol Refactor
-    TIME: 2hrs so far
+    TIME: 6hrs
     MODS:
         - Display the time remaining (in seconds) on the screen (10)
         - Implement a new timing/scoring mechanism that adds time to the clock for successful hits (15)
