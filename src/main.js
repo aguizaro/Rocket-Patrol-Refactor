@@ -12,16 +12,13 @@
         - Allow the player to control the Rocket after it's fired (5)
         - Create a new title screen (e.g., new artwork, typography, layout) (10)
         - Add your own (copyright-free) background music to the Play scene (please be mindful of the volume) (5)
-        - 
+        - Randomize each spaceship's movement direction at the start of each play (5)
+        - Track a high score that persists across scenes and display it in the UI (5)
 
-
-    
     SOURCES:
         - https://stackoverflow.com/questions/9071573/is-there-a-simple-way-to-make-a-random-selection-from-an-array-in-javascript-or
         - https://labs.phaser.io/edit.html?src=src/game%20objects/particle%20emitter/explode%20emitter.js
         - https://blog.ourcade.co/posts/2020/phaser-3-web-audio-best-practices-games/
-        - 
-
 */
 let config = {
     type: Phaser.AUTO,
@@ -31,6 +28,7 @@ let config = {
 }
 
 let game = new Phaser.Game(config);
+game.highScore= 0;
 // reserve keyboard vars
 let keyF, keyR, keyLEFT, keyRIGHT;
 // set UI sizes
