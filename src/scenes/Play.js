@@ -124,6 +124,8 @@ class Play extends Phaser.Scene {
             this.ship03.update();
             this.ship04.update();
             this.updateClock();
+        }else{
+            this.backgroundMusic.stop();
         } 
         // check collisions
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
